@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1670" viewBox="0 0 1500 1670" font-family="DejaVu Sans, Arial, sans-serif">
+<rect width="1500" height="1670" fill="#ffffff"/>
+<text x="750.0" y="45" text-anchor="middle" font-size="28" font-weight="bold" fill="#1f3a5f">Mapa visual: de la transformación digital a la adopción efectiva de IA en el Perú</text>
+<text x="750.0" y="78" text-anchor="middle" font-size="16" fill="#555">Corte: 6 de octubre de 2026 · Elaboración propia a partir de fuentes oficiales</text>
+<text x="195.0" y="102" text-anchor="middle" font-size="15" font-weight="bold" fill="#1f3a5f">Nivel</text>
+<text x="510.0" y="102" text-anchor="middle" font-size="15" font-weight="bold" fill="#2e6f95">Norma</text>
+<text x="785.0" y="102" text-anchor="middle" font-size="15" font-weight="bold" fill="#3c8d6e">Institución</text>
+<text x="1055.0" y="102" text-anchor="middle" font-size="15" font-weight="bold" fill="#b5473a">Principal problema</text>
+<text x="1335.0" y="102" text-anchor="middle" font-size="15" font-weight="bold" fill="#c58b1b">Principal oportunidad</text>
+<rect x="30" y="110" width="330" height="118" rx="10" fill="#1f3a5f" stroke="#1f3a5f" stroke-width="2"/>
+<text x="195.0" y="162.22" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">1. Transformación</text>
+<text x="195.0" y="185.97" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">digital del Estado</text>
+<rect x="370" y="110" width="280" height="118" rx="10" fill="#f4f6f9" stroke="#2e6f95" stroke-width="2"/>
+<text x="510.0" y="165.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">DU 006-2020 · DS 157-2021-PCM ·</text>
+<text x="510.0" y="182.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">PNTD 2030 (DS 085-2023-PCM)</text>
+<rect x="660" y="110" width="250" height="118" rx="10" fill="#f4f6f9" stroke="#3c8d6e" stroke-width="2"/>
+<text x="785.0" y="165.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">PCM-SGTD · Comité de Alto</text>
+<text x="785.0" y="182.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Nivel</text>
+<rect x="920" y="110" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#b5473a" stroke-width="2"/>
+<text x="1055.0" y="165.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Implementación desigual</text>
+<text x="1055.0" y="182.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">(municipios)</text>
+<rect x="1200" y="110" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#c58b1b" stroke-width="2"/>
+<text x="1335.0" y="174.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Rectoría única</text>
+<path d="M195 232 L195 256" stroke="#1f3a5f" stroke-width="4"/>
+<path d="M185 248 L195 260 L205 248 Z" fill="#1f3a5f"/>
+<rect x="30" y="262" width="330" height="118" rx="10" fill="#1f3a5f" stroke="#1f3a5f" stroke-width="2"/>
+<text x="195.0" y="326.0" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">2. Gobernanza digital</text>
+<rect x="370" y="262" width="280" height="118" rx="10" fill="#f4f6f9" stroke="#2e6f95" stroke-width="2"/>
+<text x="510.0" y="326.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">DL 1412 · DS 029-2021-PCM</text>
+<rect x="660" y="262" width="250" height="118" rx="10" fill="#f4f6f9" stroke="#3c8d6e" stroke-width="2"/>
+<text x="785.0" y="326.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">SGTD · CGTD de cada entidad</text>
+<rect x="920" y="262" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#b5473a" stroke-width="2"/>
+<text x="1055.0" y="317.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Planes de Gobierno Digital</text>
+<text x="1055.0" y="334.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">incompletos</text>
+<rect x="1200" y="262" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#c58b1b" stroke-width="2"/>
+<text x="1335.0" y="317.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Plataforma de Cumplimiento</text>
+<text x="1335.0" y="334.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Digital</text>
+<path d="M195 384 L195 408" stroke="#1f3a5f" stroke-width="4"/>
+<path d="M185 400 L195 412 L205 400 Z" fill="#1f3a5f"/>
+<rect x="30" y="414" width="330" height="118" rx="10" fill="#1f3a5f" stroke="#1f3a5f" stroke-width="2"/>
+<text x="195.0" y="466.22" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">3. Datos +</text>
+<text x="195.0" y="489.97" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">interoperabilidad</text>
+<rect x="370" y="414" width="280" height="118" rx="10" fill="#f4f6f9" stroke="#2e6f95" stroke-width="2"/>
+<text x="510.0" y="469.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">DS 029-2021 (art. 68) · ENGD (RM</text>
+<text x="510.0" y="486.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">049-2026-PCM) · PIDE · Ley 29733</text>
+<rect x="660" y="414" width="250" height="118" rx="10" fill="#f4f6f9" stroke="#3c8d6e" stroke-width="2"/>
+<text x="785.0" y="469.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">SGTD · Oficial de Gobierno de</text>
+<text x="785.0" y="486.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Datos · ANPD</text>
+<rect x="920" y="414" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#b5473a" stroke-width="2"/>
+<text x="1055.0" y="469.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Madurez de datos 1,88/5;</text>
+<text x="1055.0" y="486.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">sistemas aislados</text>
+<rect x="1200" y="414" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#c58b1b" stroke-width="2"/>
+<text x="1335.0" y="469.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Datos de alto valor; Catálogo IA</text>
+<text x="1335.0" y="486.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Perú</text>
+<path d="M195 536 L195 560" stroke="#1f3a5f" stroke-width="4"/>
+<path d="M185 552 L195 564 L205 552 Z" fill="#1f3a5f"/>
+<rect x="30" y="566" width="330" height="118" rx="10" fill="#1f3a5f" stroke="#1f3a5f" stroke-width="2"/>
+<text x="195.0" y="618.22" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">4. Inteligencia</text>
+<text x="195.0" y="641.97" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">artificial</text>
+<rect x="370" y="566" width="280" height="118" rx="10" fill="#f4f6f9" stroke="#2e6f95" stroke-width="2"/>
+<text x="510.0" y="630.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Ley 31814 art. 3 · DS 115 art. 6</text>
+<rect x="660" y="566" width="250" height="118" rx="10" fill="#f4f6f9" stroke="#3c8d6e" stroke-width="2"/>
+<text x="785.0" y="621.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Desarrolladores e</text>
+<text x="785.0" y="638.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">implementadores</text>
+<rect x="920" y="566" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#b5473a" stroke-width="2"/>
+<text x="1055.0" y="621.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Sin GPU; dependencia de APIs</text>
+<text x="1055.0" y="638.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">externas</text>
+<rect x="1200" y="566" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#c58b1b" stroke-width="2"/>
+<text x="1335.0" y="630.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">IA generativa de bajo costo</text>
+<path d="M195 688 L195 712" stroke="#1f3a5f" stroke-width="4"/>
+<path d="M185 704 L195 716 L205 704 Z" fill="#1f3a5f"/>
+<rect x="30" y="718" width="330" height="118" rx="10" fill="#1f3a5f" stroke="#1f3a5f" stroke-width="2"/>
+<text x="195.0" y="782.0" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">5. Ley + Reglamento</text>
+<rect x="370" y="718" width="280" height="118" rx="10" fill="#f4f6f9" stroke="#2e6f95" stroke-width="2"/>
+<text x="510.0" y="773.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Ley 31814 · DS 115-2025-PCM ·</text>
+<text x="510.0" y="790.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">NTP-ISO/IEC 42001:2025</text>
+<rect x="660" y="718" width="250" height="118" rx="10" fill="#f4f6f9" stroke="#3c8d6e" stroke-width="2"/>
+<text x="785.0" y="782.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">SGTD · CGR · ANPD · INDECOPI</text>
+<rect x="920" y="718" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#b5473a" stroke-width="2"/>
+<text x="1055.0" y="773.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Sin sanción propia; lineamientos</text>
+<text x="1055.0" y="790.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">pendientes</text>
+<rect x="1200" y="718" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#c58b1b" stroke-width="2"/>
+<text x="1335.0" y="773.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Enfoque de riesgos; evaluación</text>
+<text x="1335.0" y="790.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">de impacto pública</text>
+<path d="M195 840 L195 864" stroke="#1f3a5f" stroke-width="4"/>
+<path d="M185 856 L195 868 L205 856 Z" fill="#1f3a5f"/>
+<rect x="30" y="870" width="330" height="118" rx="10" fill="#1f3a5f" stroke="#1f3a5f" stroke-width="2"/>
+<text x="195.0" y="934.0" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">6. ENIA 2026-2030</text>
+<rect x="370" y="870" width="280" height="118" rx="10" fill="#f4f6f9" stroke="#2e6f95" stroke-width="2"/>
+<text x="510.0" y="934.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">RM 152-2026-PCM</text>
+<rect x="660" y="870" width="250" height="118" rx="10" fill="#f4f6f9" stroke="#3c8d6e" stroke-width="2"/>
+<text x="785.0" y="925.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">SGTD · Oficiales de IA ·</text>
+<text x="785.0" y="942.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">entidades</text>
+<rect x="920" y="870" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#b5473a" stroke-width="2"/>
+<text x="1055.0" y="934.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Sin presupuesto ni líneas base</text>
+<rect x="1200" y="870" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#c58b1b" stroke-width="2"/>
+<text x="1335.0" y="925.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Oficial de IA + Plan de IA +</text>
+<text x="1335.0" y="942.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Catálogo</text>
+<path d="M195 992 L195 1016" stroke="#1f3a5f" stroke-width="4"/>
+<path d="M185 1008 L195 1020 L205 1008 Z" fill="#1f3a5f"/>
+<rect x="30" y="1022" width="330" height="118" rx="10" fill="#1f3a5f" stroke="#1f3a5f" stroke-width="2"/>
+<text x="195.0" y="1086.0" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">7. Capacidades estatales</text>
+<rect x="370" y="1022" width="280" height="118" rx="10" fill="#f4f6f9" stroke="#2e6f95" stroke-width="2"/>
+<text x="510.0" y="1086.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">DS 115 arts. 13, 28.5 · ENIA Eje 1</text>
+<rect x="660" y="1022" width="250" height="118" rx="10" fill="#f4f6f9" stroke="#3c8d6e" stroke-width="2"/>
+<text x="785.0" y="1086.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">SERVIR-ENAP · SGTD</text>
+<rect x="920" y="1022" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#b5473a" stroke-width="2"/>
+<text x="1055.0" y="1077.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">8 000 servidores al 2030; OIA</text>
+<text x="1055.0" y="1094.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">como &#x27;segunda gorra&#x27;</text>
+<rect x="1200" y="1022" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#c58b1b" stroke-width="2"/>
+<text x="1335.0" y="1086.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Perfiles especializados</text>
+<path d="M195 1144 L195 1168" stroke="#1f3a5f" stroke-width="4"/>
+<path d="M185 1160 L195 1172 L205 1160 Z" fill="#1f3a5f"/>
+<rect x="30" y="1174" width="330" height="118" rx="10" fill="#1f3a5f" stroke="#1f3a5f" stroke-width="2"/>
+<text x="195.0" y="1238.0" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">8. Contratación pública</text>
+<rect x="370" y="1174" width="280" height="118" rx="10" fill="#f4f6f9" stroke="#2e6f95" stroke-width="2"/>
+<text x="510.0" y="1238.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Ley 32069 · DS 009-2025-EF</text>
+<rect x="660" y="1174" width="250" height="118" rx="10" fill="#f4f6f9" stroke="#3c8d6e" stroke-width="2"/>
+<text x="785.0" y="1238.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">DGA-MEF · OECE · Perú Compras</text>
+<rect x="920" y="1174" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#b5473a" stroke-width="2"/>
+<text x="1055.0" y="1229.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">TdR rígidos; lock-in; sin</text>
+<text x="1055.0" y="1246.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">cláusulas de IA</text>
+<rect x="1200" y="1174" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#c58b1b" stroke-width="2"/>
+<text x="1335.0" y="1229.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Requerimiento por</text>
+<text x="1335.0" y="1246.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">funcionalidades (art. 46.7)</text>
+<path d="M195 1296 L195 1320" stroke="#1f3a5f" stroke-width="4"/>
+<path d="M185 1312 L195 1324 L205 1312 Z" fill="#1f3a5f"/>
+<rect x="30" y="1326" width="330" height="118" rx="10" fill="#1f3a5f" stroke="#1f3a5f" stroke-width="2"/>
+<text x="195.0" y="1378.22" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">9. Contratación de</text>
+<text x="195.0" y="1401.97" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">innovación</text>
+<rect x="370" y="1326" width="280" height="118" rx="10" fill="#f4f6f9" stroke="#2e6f95" stroke-width="2"/>
+<text x="510.0" y="1381.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Ley 32069 art. 38 · RLGCP arts.</text>
+<text x="510.0" y="1398.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">247-255</text>
+<rect x="660" y="1326" width="250" height="118" rx="10" fill="#f4f6f9" stroke="#3c8d6e" stroke-width="2"/>
+<text x="785.0" y="1390.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">DGA · PRODUCE · OECE</text>
+<rect x="920" y="1326" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#b5473a" stroke-width="2"/>
+<text x="1055.0" y="1381.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">No habilitada (13.ª DCT); ámbito</text>
+<text x="1055.0" y="1398.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">estrecho</text>
+<rect x="1200" y="1326" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#c58b1b" stroke-width="2"/>
+<text x="1335.0" y="1381.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">API/CPP con protección del</text>
+<text x="1335.0" y="1398.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">funcionario (art. 253)</text>
+<path d="M195 1448 L195 1472" stroke="#1f3a5f" stroke-width="4"/>
+<path d="M185 1464 L195 1476 L205 1464 Z" fill="#1f3a5f"/>
+<rect x="30" y="1478" width="330" height="118" rx="10" fill="#1f3a5f" stroke="#1f3a5f" stroke-width="2"/>
+<text x="195.0" y="1530.22" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">10. Adopción efectiva de</text>
+<text x="195.0" y="1553.97" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">IA</text>
+<rect x="370" y="1478" width="280" height="118" rx="10" fill="#f4f6f9" stroke="#2e6f95" stroke-width="2"/>
+<text x="510.0" y="1542.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Todas las anteriores</text>
+<rect x="660" y="1478" width="250" height="118" rx="10" fill="#f4f6f9" stroke="#3c8d6e" stroke-width="2"/>
+<text x="785.0" y="1542.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Todas</text>
+<rect x="920" y="1478" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#b5473a" stroke-width="2"/>
+<text x="1055.0" y="1533.32" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">Islas de excelencia frente a la</text>
+<text x="1055.0" y="1550.82" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">periferia</text>
+<rect x="1200" y="1478" width="270" height="118" rx="10" fill="#f4f6f9" stroke="#c58b1b" stroke-width="2"/>
+<text x="1335.0" y="1542.0" text-anchor="middle" font-size="14" font-weight="normal" fill="#222">IA que llegue al territorio</text>
+</svg>
