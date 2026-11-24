@@ -26,7 +26,7 @@ def load(path):
     m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); return m
 
 FIELDS, CATS, RELS, SRC = [], list(CN.CATALOGS), [], {}
-for g in range(1, 6):
+for g in range(1, 7):
     p = os.path.join(HERE, f"campos_g{g}.py")
     if not os.path.exists(p):
         print("AVISO: falta", p); continue
@@ -37,6 +37,47 @@ for g in range(1, 6):
     CATS += getattr(m, "CATALOGS", [])
     RELS += getattr(m, "REL_TYPES", [])
 META = CN.meta_catalogs()
+
+# ----------------------------------------------------------------------------- integración (ver integracion.py)
+import integracion as IG
+def redirect(text):
+    for old, (new, _) in IG.RETIRADOS.items():
+        text = text.replace(old, new)
+    for old, (new, _) in IG.CAT_RETIRADOS.items():
+        text = text.replace(old, new)
+    return text
+FIELDS = [f for f in FIELDS if f["id"] not in IG.RETIRADOS]
+for f in FIELDS:
+    for k in list(f):
+        if isinstance(f[k], str):
+            f[k] = redirect(f[k])
+    if f["deps"]:
+        seen, toks = set(), []
+        for t in f["deps"].split("; "):
+            if t not in seen:
+                seen.add(t); toks.append(t)
+        f["deps"] = "; ".join(toks)
+    if f["id"] in IG.AJUSTES:
+        f.update(IG.AJUSTES[f["id"]])
+R1_AJUSTADOS = [f["id"] for f in FIELDS if IG.aplicar_regla_r1(f)]
+print("Regla R1 aplicada a", len(R1_AJUSTADOS), "campos")
+CATS = [c for c in CATS if c["cat_id"] not in IG.CAT_RETIRADOS]
+for c in CATS:
+    c["cat_def"] = redirect(c["cat_def"])
+    for v in c["values"]:
+        for k in ("definition", "notes", "parent", "synonyms"):
+            if isinstance(v.get(k), str):
+                v[k] = redirect(v[k])
+    if c["cat_id"] in IG.CAT_RENOMBRES:
+        c["cat_name"] = IG.CAT_RENOMBRES[c["cat_id"]]
+    if c["cat_id"] in IG.CAT_NOTAS:
+        c["cat_def"] += IG.CAT_NOTAS[c["cat_id"]]
+    c["values"] += [dict(v, parent="", synonyms="", country="", status=CN.DEF, notes="Integración")
+                    for v in IG.CAT_VALORES_AGREGADOS.get(c["cat_id"], [])]
+for rel in RELS:
+    for k in list(rel):
+        if isinstance(rel[k], str):
+            rel[k] = redirect(rel[k])
 
 DIM_ORDER = list(E.DIMENSIONES)
 FIELDS.sort(key=lambda f: (DIM_ORDER.index(f["id"].split("-")[1]), f["id"]))
@@ -52,7 +93,7 @@ funcnames = Counter(f["func"].strip().lower() for f in FIELDS)
 qc.append(("Nombres funcionales duplicados", sum(1 for v in funcnames.values() if v > 1)))
 cat_ids = Counter(c["cat_id"] for c in CATS + META)
 qc.append(("IDs de catálogo duplicados", sum(1 for v in cat_ids.values() if v > 1)))
-known = set(cat_ids)
+known = set(cat_ids) | set(IG.CAT_RETIRADOS)  # menciones históricas en notas de integración
 bad_refs = sorted({(f["id"], r) for f in FIELDS for k in ("values", "validation", "extraction", "obs", "applicability", "deps")
                    for r in re.findall(r"CAT-\d{3}", str(f[k])) if r not in known})
 qc.append(("Referencias a catálogos inexistentes", len(bad_refs)))
@@ -577,6 +618,14 @@ for lab, n in qc:
     body(qs.cell(row=r, column=3, value=0), center=True)
     body(qs.cell(row=r, column=4, value=f'=IF(B{r}=C{r},"OK","Revisar")'), center=True)
     body(qs.cell(row=r, column=5, value=f"Script de construcción ({FECHA})")); r += 1
+r += 1
+qs.cell(row=r, column=1, value="IDs retirados durante la integración (reservados: no se reutilizan)").font = H2_FONT; r += 1
+header(qs, r, ["ID retirado", "Sustituido por", "Motivo", "Tipo", "—"]); r += 1
+for old, (new, why) in list(IG.RETIRADOS.items()) + list(IG.CAT_RETIRADOS.items()):
+    vals = [old, new, why, "Catálogo" if old.startswith("CAT") else "Campo", "Reservado"]
+    for j, x in enumerate(vals, 1):
+        body(qs.cell(row=r, column=j, value=x), bold=(j == 1))
+    r += 1
 qs.freeze_panes = "A5"
 
 # ============================================================================ README
@@ -660,7 +709,8 @@ st = dict(
     pais=Counter(f["country_status"] for f in FIELDS), pendientes=sum(1 for f in FIELDS if f["pending"] != "No"),
     por_perfil={p: sum(1 for f in FIELDS if p in f["profiles"] or "UNI" in f["profiles"]) for p in ("NOR", "JUR", "ADM", "DOC")},
     por_dec=Counter(d for f in FIELDS for d in f["pending"].split("; ") if d != "No"),
-    qc=dict(qc), por_grupo=Counter(SRC.values()),
+    qc=dict(qc), por_grupo=Counter(SRC[f["id"]] for f in FIELDS), retirados=len(IG.RETIRADOS), cat_retirados=len(IG.CAT_RETIRADOS),
+    redactados=len(SRC), r1_ajustados=len(R1_AJUSTADOS),
 )
 with open(os.path.join(HERE, "estadisticas.json"), "w", encoding="utf-8") as fh:
     json.dump(st, fh, ensure_ascii=False, indent=1, default=dict)
