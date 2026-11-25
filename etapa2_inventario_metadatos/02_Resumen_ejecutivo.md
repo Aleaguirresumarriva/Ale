@@ -7,7 +7,7 @@
 - su prioridad, modo de adquisición, clase de riesgo y necesidad de revisión;
 - su sensibilidad, aplicabilidad por país, funcionalidades y validaciones pendientes.
 
-**Estado:** listo para revisión por los equipos jurídico, técnico y de producto. **No** está listo para implementar mientras no se resuelvan las validaciones de la sección 4.
+**Estado:** listo para revisión por los equipos jurídico, técnico y de producto. **No** está listo para implementar mientras no se resuelvan las validaciones de la sección 5.
 
 Archivo: `Juztina_Diccionario_Maestro_Metadatos_v1.0.xlsx` (20 hojas). Todas las cifras de este resumen salen de la hoja `12_Cobertura`, que las calcula con fórmulas.
 
@@ -36,7 +36,8 @@ La taxonomía es una **semilla pendiente de validación** (DEC-35).
 | Campos específicos de una categoría | 52 |
 | Campos aplicables a normativa / jurisprudencia / actos / doctrina | 499 / 517 / 577 / 391 |
 | Tipos de relación documental | 61 |
-| Catálogos controlados / valores | 148 / 1.293 |
+| Catálogos controlados | 150 (148 en la hoja 5, más la taxonomía y los especialistas) |
+| Valores de catálogo / etiquetas / especialistas | 1.293 / 245 / 27 |
 | Valores semilla pendientes de validación nacional | 167 |
 | Campos con validaciones o decisiones pendientes | 188 |
 | Campos con datos personales o restricciones (cualquier nivel) | 49 |

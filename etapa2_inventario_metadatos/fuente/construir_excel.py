@@ -645,7 +645,7 @@ gen = [("Número total de campos", f'=COUNTA({rngM("id")})'),
        ("Campos con datos personales o sensibles (cualquier nivel)", f'=COUNTA({rngM("privacy")})-COUNTIF({rngM("privacy")},"Ninguna")'),
        ("Campos a conservar en el primer procesamiento (modo A)", f'=COUNTIF({rngM("mode")},"A")'),
        ("Tipos de relación definidos", f"=COUNTA('8_Relaciones'!$A$2:$A${len(RELS) + 1})"),
-       ("Catálogos definidos", f"=COUNTA('5a_Indice_catalogos'!$A$2:$A${len(CATS + META) + 1})"),
+       ("Catálogos definidos (incluye taxonomía y especialistas)", f"=COUNTA('5a_Indice_catalogos'!$A$2:$A${len(CATS + META) + 3})"),
        ("Valores de catálogo", f"=COUNTA('5_Catalogos'!$C$2:$C${CAT_LAST})"),
        ("Valores de catálogo semilla pendientes de validación nacional", f"=COUNTIF('5_Catalogos'!$J$2:$J${CAT_LAST},\"Semilla*\")")]
 cv.cell(row=row, column=1, value="Resumen general").font = H2_FONT; row += 1
