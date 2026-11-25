@@ -40,6 +40,7 @@ META = CN.meta_catalogs()
 
 # ----------------------------------------------------------------------------- integración (ver integracion.py)
 import integracion as IG
+import taxonomia as TX
 def redirect(text):
     for old, (new, _) in IG.RETIRADOS.items():
         text = text.replace(old, new)
@@ -93,7 +94,7 @@ funcnames = Counter(f["func"].strip().lower() for f in FIELDS)
 qc.append(("Nombres funcionales duplicados", sum(1 for v in funcnames.values() if v > 1)))
 cat_ids = Counter(c["cat_id"] for c in CATS + META)
 qc.append(("IDs de catálogo duplicados", sum(1 for v in cat_ids.values() if v > 1)))
-known = set(cat_ids) | set(IG.CAT_RETIRADOS)  # menciones históricas en notas de integración
+known = set(cat_ids) | set(IG.CAT_RETIRADOS) | {"CAT-330", "CAT-331"}  # retirados (menciones históricas) y catálogos con hoja propia (5b, 5c)
 bad_refs = sorted({(f["id"], r) for f in FIELDS for k in ("values", "validation", "extraction", "obs", "applicability", "deps")
                    for r in re.findall(r"CAT-\d{3}", str(f[k])) if r not in known})
 qc.append(("Referencias a catálogos inexistentes", len(bad_refs)))
@@ -267,7 +268,103 @@ for r, c in enumerate(CATS + META, 2):
     body(ci.cell(row=r, column=5, value=f"=COUNTIFS('5_Catalogos'!$A$2:$A${CAT_LAST},A{r},'5_Catalogos'!$J$2:$J${CAT_LAST},\"Semilla*\")"), center=True)
     body(ci.cell(row=r, column=6, value=f'=COUNTIF({M}!${COL["values"]}$2:${COL["values"]}${LAST},"*"&A{r}&"*")'), center=True)
     body(ci.cell(row=r, column=7, value=origin), center=True)
-finish(ci, 1, len(hdr), len(CATS + META) + 1)
+r = len(CATS + META) + 2
+for cid, cname, cdef, cnt in [
+    ("CAT-330", "Taxonomía de etiquetas jurídicas (áreas, especialidades, subespecialidades)",
+     "Etiquetas para clasificar unidades y obras; valores en la hoja 5b con jerarquía, inclusiones, exclusiones, indicadores y reglas. Semilla pendiente de validación (DEC-35).",
+     "=COUNTIF('5b_Taxonomia_etiquetas'!$A$5:$A$400,\"CON-*\")"),
+    ("CAT-331", "Especialistas de Juztina", "Especialistas actuales y potenciales definidos como selección de etiquetas de CAT-330; valores en la hoja 5c.",
+     "=COUNTIF('5c_Especialistas_Juztina'!$A$5:$A$200,\"ESP-??\")")]:
+    vals = [cid, cname, cdef, cnt, cnt, f'=COUNTIF({M}!${COL["values"]}$2:${COL["values"]}${LAST},"*"&A{r}&"*")', "taxonomía"]
+    for j, x in enumerate(vals, 1):
+        body(ci.cell(row=r, column=j, value=x), bold=(j == 1), center=(j in (4, 5, 6, 7)))
+    r += 1
+finish(ci, 1, len(hdr), r - 1)
+
+
+# ============================================================================ 5b Taxonomía de etiquetas y 5c Especialistas
+YELLOW = PatternFill("solid", fgColor="FFF2CC")
+TX_IDX = {r["id"]: r for r in TX.ROWS}
+ordered = []
+for a in [r for r in TX.ROWS if r["nivel"] == 1]:
+    ordered.append(a)
+    for e in [r for r in TX.ROWS if r["nivel"] == 2 and r["padre"] == a["id"]]:
+        ordered.append(e)
+        ordered += [r for r in TX.ROWS if r["nivel"] == 3 and r["padre"] == e["id"]]
+assert len(ordered) == len(TX.ROWS)
+def area_of(r):
+    while r["nivel"] > 1:
+        r = TX_IDX[r["padre"]]
+    return r["nombre"]
+tx = sheet("5b_Taxonomia_etiquetas")
+tx["A1"] = "Taxonomía de etiquetas jurídicas (CAT-330) · semilla v0.1 pendiente de validación"; tx["A1"].font = TITLE_FONT
+tx["A2"] = ("Lista de etiquetas con que la IA marcará cada unidad (artículo, problema jurídico, punto resolutivo…) y, por agregación, cada obra. "
+            "Un documento puede llevar tantas etiquetas como materias trate de verdad, cada una como principal o secundaria (MDJ-D06-006). "
+            "Las celdas amarillas son para el equipo jurídico: marque cada fila y agregue al final las etiquetas que falten.")
+tx["A2"].font = BODY; tx["A2"].alignment = WRAP; tx.merge_cells("A2:P2"); tx.row_dimensions[2].height = 44
+TXH = ["ID de la etiqueta", "Nivel", "Tipo", "Etiqueta", "Área principal", "Padre (ID)", "Padre", "También pertenece a (IDs)",
+       "Gran área (F1)", "Incluye", "Excluye", "Indicadores para la IA", "Denominaciones alternativas", "Sector vinculado",
+       "Regla (etiquetas sectoriales)", "Especialista Juztina actual", "Nº de especialistas que la usan", "Estado",
+       "Validación del equipo jurídico", "Comentarios"]
+header(tx, 4, TXH, [14, 7, 20, 34, 26, 14, 28, 22, 22, 50, 40, 50, 24, 22, 40, 22, 12, 22, 20, 36])
+TX_LAST_DATA = 4 + len(ordered)
+for i, rw in enumerate(ordered, 5):
+    vals = [rw["id"], rw["nivel"], rw["tipo"], rw["nombre"], area_of(rw), rw["padre"],
+            (f'=IFERROR(INDEX($D$5:$D${TX_LAST_DATA},MATCH(F{i},$A$5:$A${TX_LAST_DATA},0)),"—")' if rw["padre"] != "—" else "—"),
+            rw["otros"], rw["ga"], rw["incluye"], rw["excluye"], rw["indicadores"], rw["sinonimos"], rw["sector"], rw["regla"],
+            rw["actual"], None, "Semilla — pendiente de validación (DEC-35)", "", ""]
+    for j, x in enumerate(vals, 1):
+        c = tx.cell(row=i, column=j, value=x)
+        body(c, bold=(j in (1, 4) and rw["nivel"] == 1) or j == 1, center=(j in (2, 17)))
+        if rw["nivel"] == 1:
+            c.fill = SUB_FILL
+    body(tx.cell(row=i, column=17, value=f"=COUNTIF('5c_Especialistas_Juztina'!$D$5:$D$200,\"*\"&A{i}&\"*\")"), center=True)
+    if rw["nivel"] == 1:
+        tx.cell(row=i, column=17).fill = SUB_FILL
+    for j in (19, 20):
+        tx.cell(row=i, column=j).fill = YELLOW
+NEW_ROWS = 30
+for k in range(1, NEW_ROWS + 1):
+    i = TX_LAST_DATA + k
+    for j in range(1, len(TXH) + 1):
+        c = tx.cell(row=i, column=j, value=(f"NUEVA-{k:02d}" if j == 1 else ("Propuesta nueva" if j == 18 else None)))
+        body(c); c.fill = YELLOW
+TX_END = TX_LAST_DATA + NEW_ROWS
+dvv = DataValidation(type="list", formula1='"OK,Falta subdividir,Sobra (eliminar),Renombrar,Mover a otra área,Fusionar con otra,Nueva etiqueta"', allow_blank=True)
+tx.add_data_validation(dvv); dvv.add(f"S5:S{TX_END}")
+dvn = DataValidation(type="list", formula1='"1,2,3"', allow_blank=True)
+tx.add_data_validation(dvn); dvn.add(f"B{TX_LAST_DATA + 1}:B{TX_END}")
+finish(tx, 4, len(TXH), TX_END, freeze_col="E")
+
+es = sheet("5c_Especialistas_Juztina")
+es["A1"] = "Especialistas de Juztina definidos como selección de etiquetas (CAT-331)"; es["A1"].font = TITLE_FONT
+es["A2"] = ("Cada especialista toma las unidades y obras que tengan alguna de sus etiquetas (o una etiqueta descendiente) con la relevancia mínima indicada. "
+            "Crear un especialista nuevo no exige reprocesar el corpus: basta con definir aquí sus etiquetas. Las celdas amarillas son para validación.")
+es["A2"].font = BODY; es["A2"].alignment = WRAP; es.merge_cells("A2:L2"); es.row_dimensions[2].height = 36
+ESH = ["ID", "Especialista", "Estado", "Etiquetas incluidas (IDs)", "Etiquetas incluidas (nombres)", "Nº de etiquetas directas",
+       "Incluye etiquetas descendientes", "Relevancia mínima", "Etiquetas excluidas", "Regla de selección", "Observaciones",
+       "Validación", "Comentarios"]
+header(es, 4, ESH, [9, 26, 14, 36, 60, 11, 12, 18, 18, 70, 44, 18, 36])
+for i, sp in enumerate(TX.SPECIALISTS, 5):
+    names = "; ".join(TX_IDX[e]["nombre"] for e in sp["etiquetas"].split("; "))
+    regla = (f"Incluir la unidad si tiene una asignación de clasificación (MDJ-D06-004/005/006) a {sp['etiquetas']} o a una etiqueta "
+             f"descendiente, con relevancia {sp['relevancia'].lower()}. Incluir la obra si alguna de sus unidades cumple (MDJ-OPE-009). "
+             "Para la normativa, excluir unidades con estado de vigencia 'derogada' salvo consultas históricas.")
+    vals = [sp["id"], sp["nombre"], sp["estado"], sp["etiquetas"], names,
+            f'=LEN(D{i})-LEN(SUBSTITUTE(D{i},";",""))+1', "Sí", sp["relevancia"], sp["excluye"], regla, sp["nota"], "", ""]
+    for j, x in enumerate(vals, 1):
+        body(es.cell(row=i, column=j, value=x), bold=(j in (1, 2)), center=(j in (3, 6, 7)))
+    for j in (12, 13):
+        es.cell(row=i, column=j).fill = YELLOW
+ES_LAST = 4 + len(TX.SPECIALISTS)
+for k in range(1, 16):
+    i = ES_LAST + k
+    for j in range(1, len(ESH) + 1):
+        c = es.cell(row=i, column=j, value=(f"ESP-N{k:02d}" if j == 1 else ("Propuesta" if j == 3 else None)))
+        body(c); c.fill = YELLOW
+dve = DataValidation(type="list", formula1='"OK,Agregar etiquetas,Quitar etiquetas,Cambiar relevancia,Descartar"', allow_blank=True)
+es.add_data_validation(dve); dve.add(f"L5:L{ES_LAST + 15}")
+finish(es, 4, len(ESH), ES_LAST + 15, freeze_col="C")
 
 # ============================================================================ 6 Aplicabilidad por país
 cp = sheet("6_Aplicabilidad_pais")
@@ -451,6 +548,7 @@ DEC_META = {
  "DEC-32": ("Técnica", "Ingeniería", "Sin conocer la completitud histórica, la línea de vida se marca 'parcial'."),
  "DEC-33": ("Técnica + jurídica", "Ingeniería + responsable de país", "Los organismos se identifican sin clave auxiliar."),
  "DEC-34": ("Jurídica por país", "Responsable jurídico de cada país", "La fecha de efecto de fe de erratas queda 'Indeterminada'."),
+ "DEC-35": ("Jurídica por materia + producto", "Especialistas por materia + producto", "Las etiquetas semilla se usan solo en el piloto; los especialistas nuevos no se publican hasta validar sus etiquetas."),
 }
 pd_ = sheet("11_Pendientes")
 hdr = ["ID", "Decisión o validación pendiente", "Tipo de validación", "Responsable sugerido", "Nº de campos afectados",
@@ -577,6 +675,12 @@ block("Campos por clase de riesgo", E.RIESGOS, lambda r, i: f'=COUNTIF({rngM("ri
 row += 1
 block("Campos por sensibilidad y privacidad", E.PRIVACIDAD, lambda r, i: f'=COUNTIF({rngM("privacy")},A{r})')
 row += 1
+block("Taxonomía de etiquetas (hoja 5b)", ["Área principal", "Especialidad", "Especialidad sectorial o de práctica", "Subespecialidad"],
+      lambda r, i: f"=COUNTIF('5b_Taxonomia_etiquetas'!$C$5:$C$400,A{r})", extra_hdr=["Tipo de etiqueta", "Nº de etiquetas"])
+row += 1
+block("Especialistas de Juztina (hoja 5c)", ["En producción", "Potencial", "Propuesta"],
+      lambda r, i: f"=COUNTIF('5c_Especialistas_Juztina'!$C$5:$C$200,A{r})", extra_hdr=["Estado", "Nº de especialistas"])
+row += 1
 block("Campos por estado por país", E.ESTADO_PAIS, lambda r, i: f'=COUNTIF({rngM("country_status")},A{r})')
 row += 1
 PCOL = {pc: get_column_letter(5 + i) for i, pc in enumerate(E.PAISES)}
@@ -658,6 +762,8 @@ SECTIONS = [
   ("3_Campos_universales", "Campos aplicables a las cuatro categorías, con condiciones y excepciones (fórmulas sobre el maestro)."),
   ("4_Campos_por_perfil", "Aplicabilidad a normativa, jurisprudencia, actos y doctrina; alcance universal, compartido o específico."),
   ("5_Catalogos / 5a_Indice_catalogos", "Valores permitidos de cada vocabulario controlado con ID, definición, jerarquía, sinónimos, país, estado y versión; índice con conteos."),
+  ("5b_Taxonomia_etiquetas", "LA LISTA DE ETIQUETAS: 27 áreas principales, especialidades dogmáticas y sectoriales (Minero, Bancario, Moda…) y subespecialidades, con qué incluye y excluye cada una, indicadores para la IA y columnas amarillas para validar o proponer etiquetas nuevas."),
+  ("5c_Especialistas_Juztina", "Especialistas actuales (Laboral, Tributario, Consumidor) y potenciales, cada uno definido como un conjunto de etiquetas de la hoja 5b."),
   ("6_Aplicabilidad_pais", "Matriz campo × país calculada a partir de los atributos 'Países' y 'Estado por país'."),
   ("7_Reglas_extraccion", "Reglas de extracción y validación, evidencia, criterio de aceptación por riesgo y excepciones, por campo."),
   ("8_Relaciones / 8a_Referencias", "Tipos de relación con direccionalidad, inversa, modo, evidencia y reglas; tipos de referencia con información mínima."),
@@ -690,6 +796,7 @@ for lab, ref in [("Total de campos", f"='12_Cobertura'!B{TOTAL_ROW}"), ("Campos 
 
 # orden de hojas
 order = ["1_README", "2_Diccionario_maestro", "3_Campos_universales", "4_Campos_por_perfil", "5_Catalogos", "5a_Indice_catalogos",
+         "5b_Taxonomia_etiquetas", "5c_Especialistas_Juztina",
          "6_Aplicabilidad_pais", "7_Reglas_extraccion", "8_Relaciones", "8a_Referencias", "9_Prioridad_procesamiento",
          "10_Funcionalidades", "11_Pendientes", "12_Cobertura", "13_Reglas_generales", "14_Unidades_y_etapas",
          "15_Control_calidad", "16_Listas"]
@@ -710,7 +817,8 @@ st = dict(
     por_perfil={p: sum(1 for f in FIELDS if p in f["profiles"] or "UNI" in f["profiles"]) for p in ("NOR", "JUR", "ADM", "DOC")},
     por_dec=Counter(d for f in FIELDS for d in f["pending"].split("; ") if d != "No"),
     qc=dict(qc), por_grupo=Counter(SRC[f["id"]] for f in FIELDS), retirados=len(IG.RETIRADOS), cat_retirados=len(IG.CAT_RETIRADOS),
-    redactados=len(SRC), r1_ajustados=len(R1_AJUSTADOS),
+    redactados=len(SRC), r1_ajustados=len(R1_AJUSTADOS), etiquetas=len(TX.ROWS),
+    etiquetas_por_tipo=Counter(r["tipo"] for r in TX.ROWS), especialistas=len(TX.SPECIALISTS),
 )
 with open(os.path.join(HERE, "estadisticas.json"), "w", encoding="utf-8") as fh:
     json.dump(st, fh, ensure_ascii=False, indent=1, default=dict)

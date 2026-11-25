@@ -101,7 +101,7 @@
   "Pendiente validación nacional": 58,
   "Condicionado": 3
  },
- "pendientes": 188,
+ "pendientes": 190,
  "por_perfil": {
   "NOR": 499,
   "JUR": 517,
@@ -129,7 +129,8 @@
   "DEC-19": 3,
   "DEC-27": 8,
   "DEC-11": 2,
-  "DEC-12": 4,
+  "DEC-35": 4,
+  "DEC-12": 3,
   "DEC-30": 1,
   "DEC-29": 10,
   "DEC-26": 1
@@ -156,5 +157,13 @@
  "retirados": 12,
  "cat_retirados": 2,
  "redactados": 636,
- "r1_ajustados": 36
+ "r1_ajustados": 36,
+ "etiquetas": 245,
+ "etiquetas_por_tipo": {
+  "Área principal": 27,
+  "Especialidad": 131,
+  "Especialidad sectorial o de práctica": 27,
+  "Subespecialidad": 60
+ },
+ "especialistas": 27
 }

@@ -31,6 +31,7 @@
 
 | Orden | Decisión | Por qué es urgente | Campos afectados |
 | --- | --- | --- | --- |
+| 0 | DEC-35 Validación de la taxonomía de etiquetas y de los especialistas | Es la base de la funcionalidad principal (selección de documentos por especialista) | 4 campos y 245 etiquetas |
 | 1 | DEC-18 Política de datos personales | Define campos que se extraen en P0 y no es reversible | 23 |
 | 2 | DEC-20 Metas de precisión e interpretación de RG-10 | Decide qué campos entran en la pasada y cuánto hay que revisar | 41 |
 | 3 | DEC-22 Corte P1/P2 (presupuesto y volumen) | Fija el alcance final de la pasada | Todos los P1 y P2 |

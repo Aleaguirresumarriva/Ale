@@ -65,6 +65,14 @@ AJUSTES = {
         "extraction": "Extraer la modalidad expresa ('por unanimidad', 'por mayoría') y el conteo solo si el texto lo consigna. No deducir conteos de las firmas ni del número de votos singulares.",
         "defn": "Modalidad de adopción de la decisión colegiada (unanimidad o mayoría) y, cuando consta, el número de votos a favor, en contra, abstenciones y otras posiciones.",
     },
+    "MDJ-D06-021": {"values": "CAT-330 Taxonomía de etiquetas jurídicas (hoja 5b): etiquetas de nivel 1 (área principal) y de nivel 2 de tipo 'Especialidad'.",
+                    "pending": "DEC-35"},
+    "MDJ-D06-022": {"values": "CAT-330 Taxonomía de etiquetas jurídicas (hoja 5b): etiquetas de tipo 'Especialidad sectorial o de práctica'; cada una con su regla en la columna 'Regla'.",
+                    "pending": "DEC-12; DEC-35"},
+    "MDJ-D06-023": {"values": "CAT-330 Taxonomía de etiquetas jurídicas (hoja 5b): etiquetas de nivel 3 (subespecialidad).",
+                    "pending": "DEC-35"},
+    "MDJ-OPE-009": {"values": "CAT-331 Especialistas de Juztina (hoja 5c). Se calcula con la regla de selección de cada especialista sobre las asignaciones de clasificación de la obra y sus unidades.",
+                    "pending": "DEC-35"},
     "MDJ-D13-015": {"values": "CAT-412 Rol del actor institucional (incluye los roles de firma integrados desde CAT-103)."},
 }
 

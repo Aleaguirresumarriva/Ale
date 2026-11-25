@@ -9,9 +9,24 @@
 
 **Estado:** listo para revisión por los equipos jurídico, técnico y de producto. **No** está listo para implementar mientras no se resuelvan las validaciones de la sección 4.
 
-Archivo: `Juztina_Diccionario_Maestro_Metadatos_v1.0.xlsx` (18 hojas). Todas las cifras de este resumen salen de la hoja `12_Cobertura`, que las calcula con fórmulas.
+Archivo: `Juztina_Diccionario_Maestro_Metadatos_v1.0.xlsx` (20 hojas). Todas las cifras de este resumen salen de la hoja `12_Cobertura`, que las calcula con fórmulas.
 
-## 1. Cifras principales
+## 1. Etiquetas por áreas del Derecho (taxonomía)
+
+La clasificación por áreas, que habilita los especialistas, está en dos hojas:
+
+- **`5b_Taxonomia_etiquetas`.** 245 etiquetas en tres niveles:
+  - 27 áreas principales (Constitucional, Administrativo, Civil, Familia, Contratos, Laboral, Tributario, Consumidor, Procesal, Penal, Financiero…);
+  - 131 especialidades;
+  - 27 especialidades sectoriales o de práctica (Minero, Bancario, Hidrocarburos, Salud, Telecomunicaciones, Moda…);
+  - 60 subespecialidades.
+
+  Cada etiqueta indica qué incluye y qué excluye, trae indicadores para la IA y tiene columnas amarillas para que el equipo jurídico la valide o proponga etiquetas nuevas.
+- **`5c_Especialistas_Juztina`.** 3 especialistas en producción (Laboral, Tributario, Consumidor) y 24 potenciales, cada uno definido como un conjunto de etiquetas. Un especialista nuevo se crea definiendo sus etiquetas, sin reprocesar el corpus.
+
+La taxonomía es una **semilla pendiente de validación** (DEC-35).
+
+## 2. Cifras principales
 
 | Indicador | Valor |
 | --- | --- |
@@ -27,7 +42,7 @@ Archivo: `Juztina_Diccionario_Maestro_Metadatos_v1.0.xlsx` (18 hojas). Todas las
 | Campos con datos personales o restricciones (cualquier nivel) | 49 |
 | Campos que se conservan en la pasada masiva (modo A) | 368 |
 
-## 2. Prioridad y modo de adquisición
+## 3. Prioridad y modo de adquisición
 
 | Prioridad | A (pasada) | B (calculado) | C (posterior) | D (externo o curado) | X (fuera de alcance) | Total |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -48,7 +63,7 @@ Los 295 campos P0 cubren los seis bloques que la arquitectura protege:
 
 P0 incluye además los identificadores y registros técnicos generados por el sistema. No incluye clasificación temática ni análisis jurídico.
 
-## 3. Distribución
+## 4. Distribución
 
 - **Por dimensión.** Los mayores bloques son referencias y relaciones (64), temporalidad y vigencia (60), estructura (60), clasificación (51) y la capa de procedencia (48).
 - **Por unidad.** Obra (140), unidad estructural (68), manifestación (51), referencia (44), monto (29), parte o actor (23) y concepto de taxonomía (23).
@@ -69,10 +84,11 @@ P0 incluye además los identificadores y registros técnicos generados por el si
 - **Revisión humana.** Obligatoria en 56 campos y condicionada en 140.
 - **Por país.** Todos los campos aplican a los siete países, salvo los de figuras que no existen en todos (por ejemplo, los textos ordenados). Hay 478 campos comunes, 85 con catálogo por país y 58 pendientes de validación nacional.
 
-## 4. Antes de implementar
+## 5. Antes de implementar
 
-1. **Validación nacional** de catálogos y reglas por un especialista de cada país: tipos documentales, rangos, precedentes, efectos de vigencia, códigos territoriales y unidades de valor.
-2. **Política de datos personales** por país (DEC-18). Define el alcance final de los campos de partes y personas.
-3. **Metas de precisión y capacidad de revisión** (DEC-20). Afectan a 41 campos y a la interpretación de la regla RG-10.
-4. **Presupuesto y volumen del corpus** para fijar el corte entre P1 y P2 (DEC-22).
-5. **Piloto** sobre una muestra estratificada con conjunto de referencia anotado por abogados. Ningún campo entra en la pasada masiva sin alcanzar su meta de precisión.
+1. **Validación de la taxonomía de etiquetas y de los especialistas** (DEC-35) por los especialistas de cada materia: es la base de la funcionalidad principal.
+2. **Validación nacional** de catálogos y reglas por un especialista de cada país: tipos documentales, rangos, precedentes, efectos de vigencia, códigos territoriales y unidades de valor.
+3. **Política de datos personales** por país (DEC-18). Define el alcance final de los campos de partes y personas.
+4. **Metas de precisión y capacidad de revisión** (DEC-20). Afectan a 41 campos y a la interpretación de la regla RG-10.
+5. **Presupuesto y volumen del corpus** para fijar el corte entre P1 y P2 (DEC-22).
+6. **Piloto** sobre una muestra estratificada con conjunto de referencia anotado por abogados. Ningún campo entra en la pasada masiva sin alcanzar su meta de precisión.

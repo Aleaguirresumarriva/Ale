@@ -161,6 +161,7 @@ DECISIONES = {  # pending = "No" o lista "DEC-07; DEC-18"
     "DEC-32": "Completitud histórica real de la normativa almacenada",
     "DEC-33": "Claves auxiliares para organismos (RUC, NIT, RUT, CUIT, RFC)",
     "DEC-34": "Fecha de efecto de las fe de erratas por país",
+    "DEC-35": "Validación del contenido de la taxonomía de etiquetas (CAT-330) y de los especialistas de Juztina (CAT-331)",
 }
 
 # Catálogos núcleo definidos por el constructor (rango CAT-0xx). Los módulos los referencian por ID.

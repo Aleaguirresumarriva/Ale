@@ -72,7 +72,16 @@ Los bloques se redactaron por dimensiones. Al unirlos se encontraron solapamient
 - **Minimización de datos personales.** Los nombres y documentos de identidad de personas naturales y los abogados quedan en la clase X, fuera del alcance inicial. Los indicadores de privacidad están en P0.
 - **Países.** Ningún catálogo nacional se presenta como validado. Los valores sembrados por país llevan el estado «Semilla — pendiente de validación nacional» (167 valores).
 
-## 6. Hallazgo que requiere decisión: la regla RG-10
+## 6. Taxonomía de etiquetas y especialistas
+
+Los campos de clasificación (MDJ-D06-021 a 023) y el campo de especialistas por obra (MDJ-OPE-009) remiten a dos catálogos con hoja propia:
+
+- **CAT-330, hoja 5b.** Taxonomía de etiquetas en tres niveles: área principal, especialidad (dogmática o sectorial) y subespecialidad. Admite que una etiqueta pertenezca a más de un área («También pertenece a»).
+- **CAT-331, hoja 5c.** Especialistas de Juztina, cada uno definido por sus etiquetas y una relevancia mínima.
+
+Las etiquetas sectoriales (Minero, Bancario, Moda…) se calculan con la regla indicada en cada fila, como prevé la arquitectura. La lista es una semilla elaborada sin acceso a los criterios actuales de los especialistas. Debe validarla el equipo jurídico (DEC-35).
+
+## 7. Hallazgo que requiere decisión: la regla RG-10
 
 La arquitectura v3 (G, regla 10) dice que **toda** afirmación R1 pasa por revisión humana antes de alimentar cálculos. Aplicada literalmente, obliga a revisar cada evento de vigencia, cada operación modificatoria y cada monto ordenado del corpus.
 
@@ -82,7 +91,7 @@ El inventario no modifica la regla. Los 36 campos R1 extraídos o inferidos que 
 
 Esos campos quedaron vinculados a DEC-20. **Producto debe confirmar o rechazar esta interpretación** según su capacidad real de revisión.
 
-## 7. Qué requiere validación
+## 8. Qué requiere validación
 
 | Validación | Quién | Decisiones |
 | --- | --- | --- |
@@ -91,4 +100,5 @@ Esos campos quedaron vinculados a DEC-20. **Producto debe confirmar o rechazar e
 | Uso de doctrina protegida | Área legal | DEC-27 |
 | Metas de precisión, corte P1/P2, colecciones de tipos limítrofes, cobertura subnacional | Producto | DEC-07, 20, 22, 31 |
 | Alineación con los fragmentos del asistente, insumos intermedios, completitud histórica, claves de organismos | Ingeniería | DEC-09, 24, 32, 33 |
+| Contenido de la taxonomía de etiquetas y de los especialistas | Especialistas por materia + producto | DEC-35 |
 | Reglas de especialidades de práctica, responsables de la taxonomía, umbrales de sobreclasificación | Comité taxonómico y especialistas | DEC-11, 12, 13 |
