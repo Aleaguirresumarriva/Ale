@@ -9,7 +9,11 @@
 
 **Estado:** listo para revisión por los equipos jurídico, técnico y de producto. **No** está listo para implementar mientras no se resuelvan las validaciones de la sección 5.
 
-Archivo: `Juztina_Diccionario_Maestro_Metadatos_v1.0.xlsx` (20 hojas). Todas las cifras de este resumen salen de la hoja `12_Cobertura`, que las calcula con fórmulas.
+Archivo: `Juztina_Diccionario_Maestro_Metadatos_v1.0.xlsx` (31 hojas en dos capas):
+
+- **Pestañas de lectura** (verde azulado, de `A_Inicio` a `K_Glosario`): el recorrido completo en lenguaje simple. Incluye el mapa de metadatos, una hoja por tipo de documento, las etiquetas, los especialistas, las diferencias por país, un ejemplo completo y un glosario.
+- **Anexo técnico** (gris, de `1` a `16`): el diccionario completo para ingeniería.
+ Todas las cifras de este resumen salen de la hoja `12_Cobertura`, que las calcula con fórmulas.
 
 ## 1. Etiquetas por áreas del Derecho (taxonomía)
 

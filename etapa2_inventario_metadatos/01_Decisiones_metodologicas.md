@@ -81,7 +81,16 @@ Los campos de clasificación (MDJ-D06-021 a 023) y el campo de especialistas por
 
 Las etiquetas sectoriales (Minero, Bancario, Moda…) se calculan con la regla indicada en cada fila, como prevé la arquitectura. La lista es una semilla elaborada sin acceso a los criterios actuales de los especialistas. Debe validarla el equipo jurídico (DEC-35).
 
-## 7. Hallazgo que requiere decisión: la regla RG-10
+## 7. Dos capas de lectura
+
+El libro tiene dos capas generadas desde la misma fuente:
+
+- **Pestañas de lectura (A a K).** Lenguaje simple para los equipos jurídico y de producto.
+- **Anexo técnico (1 a 16).** El diccionario completo para ingeniería.
+
+Las cifras de las pestañas de lectura se calculan con fórmulas sobre el anexo, de modo que las dos capas no pueden desincronizarse. La hoja de países (`I_Paises`) reúne los valores semilla por país y está íntegramente marcada como pendiente de validación nacional.
+
+## 8. Hallazgo que requiere decisión: la regla RG-10
 
 La arquitectura v3 (G, regla 10) dice que **toda** afirmación R1 pasa por revisión humana antes de alimentar cálculos. Aplicada literalmente, obliga a revisar cada evento de vigencia, cada operación modificatoria y cada monto ordenado del corpus.
 
@@ -91,7 +100,7 @@ El inventario no modifica la regla. Los 36 campos R1 extraídos o inferidos que 
 
 Esos campos quedaron vinculados a DEC-20. **Producto debe confirmar o rechazar esta interpretación** según su capacidad real de revisión.
 
-## 8. Qué requiere validación
+## 9. Qué requiere validación
 
 | Validación | Quién | Decisiones |
 | --- | --- | --- |

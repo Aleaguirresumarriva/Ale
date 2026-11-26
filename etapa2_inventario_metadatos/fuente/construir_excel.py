@@ -18,7 +18,7 @@ import catalogos_nucleo as CN
 
 OUT = os.path.join(HERE, "..", "Juztina_Diccionario_Maestro_Metadatos_v1.0.xlsx")
 VERSION = "1.0"
-FECHA = "2026-11-24"
+FECHA = "2026-11-26"
 
 # ----------------------------------------------------------------------------- carga
 def load(path):
@@ -735,8 +735,10 @@ qs.freeze_panes = "A5"
 # ============================================================================ README
 rd = readme
 rd.column_dimensions["A"].width = 30; rd.column_dimensions["B"].width = 120
-rd["A1"] = f"Juztina — Diccionario maestro de metadatos jurídicos · versión {VERSION}"; rd["A1"].font = TITLE_FONT
-rd["A2"] = f"Fecha de generación: {FECHA}. Etapa 2 del proyecto de arquitectura global de metadatos jurídicos."; rd["A2"].font = BODY
+rd["A1"] = f"Anexo técnico · Diccionario maestro de metadatos jurídicos · versión {VERSION}"; rd["A1"].font = TITLE_FONT
+rd["A2"] = (f"Fecha de generación: {FECHA}. Para una lectura sencilla, empiece por las pestañas de color verde azulado (A_Inicio a K_Glosario); "
+            "estas pestañas grises numeradas son el detalle técnico.")
+rd["A2"].font = BODY
 SECTIONS = [
  ("Propósito", [
   ("Qué es", "Diccionario maestro que define, campo por campo, qué información conservar, sobre qué unidad documental, de dónde obtenerla, cómo extraerla y validarla, qué evidencia guardar, qué prioridad tiene y qué funcionalidades habilita."),
@@ -800,7 +802,12 @@ order = ["1_README", "2_Diccionario_maestro", "3_Campos_universales", "4_Campos_
          "6_Aplicabilidad_pais", "7_Reglas_extraccion", "8_Relaciones", "8a_Referencias", "9_Prioridad_procesamiento",
          "10_Funcionalidades", "11_Pendientes", "12_Cobertura", "13_Reglas_generales", "14_Unidades_y_etapas",
          "15_Control_calidad", "16_Listas"]
-wb._sheets = [wb[n] for n in order]
+import vista_lectura as VL
+READ = VL.build(wb, FIELDS, TX, CATS, M, COL, LAST, dict(total_row=TOTAL_ROW))
+for n in order:
+    wb[n].sheet_properties.tabColor = "A6A6A6"
+wb._sheets = [wb[n] for n in READ + order]
+wb.active = 0
 for ws in wb.worksheets:
     ws.sheet_view.zoomScale = 90
 wb.save(OUT)
